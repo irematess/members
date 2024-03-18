@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { onMounted, ref } from 'vue'
+import { fetchUsers } from '../services/userService'
+
+const users = ref([])
+
+onMounted(() => {
+  fetchUsers().then((data) => (users.value = data))
+})
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div></div>
 </template>
