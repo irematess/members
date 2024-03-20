@@ -23,8 +23,6 @@ onMounted(() => {
 
 <style>
 body {
-  background: rgb(252, 247, 101);
-  background: radial-gradient(circle, rgba(252, 247, 101, 1) 0%, rgba(255, 255, 255, 1) 100%);
   justify-content: center;
   display: flex;
   flex-direction: row;

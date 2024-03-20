@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 const props = defineProps({
   member: { type: Object }
 })
+const route = useRoute()
 </script>
 
 <template>
@@ -10,7 +12,9 @@ const props = defineProps({
       <img :src="`https://api.dicebear.com/8.x/pixel-art/svg?seed=${member.username}`" alt="" />
     </figure>
     <ul>
-      <li>{{ member.name }}</li>
+      <li>
+        <router-link :to="`/member/${member.id}`">{{ member.name }}</router-link>
+      </li>
       <li>@{{ member.username }}</li>
       <li>{{ member.email }}</li>
       <li>{{ member.address.city }}</li>
@@ -39,7 +43,6 @@ ul {
 
 ul li {
   padding: 1px;
-  /* border-top: 1px solid rgb(163, 146, 146); */
   border-top: 1px solid;
   text-align: center;
   font-family: cursive;
