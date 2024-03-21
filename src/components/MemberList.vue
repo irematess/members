@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 const props = defineProps({
   member: { type: Object }
 })
-const route = useRoute()
 </script>
 
 <template>
@@ -11,7 +9,7 @@ const route = useRoute()
     <figure>
       <img :src="`https://api.dicebear.com/8.x/pixel-art/svg?seed=${member.username}`" alt="" />
     </figure>
-    <ul>
+    <ul v-if="member">
       <li>
         <router-link :to="`/member/${member.id}`">{{ member.name }}</router-link>
       </li>
