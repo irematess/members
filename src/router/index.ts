@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import MemberView from '@/views/MemberView.vue'
-import MemberAlbumView from '@/views/MemberAlbumView.vue'
 import MemberPostsView from '@/views/MemberPostsView.vue'
+import MemberAlbumView from '@/views/MemberAlbumView.vue'
 import MemberTodoView from '@/views/MemberTodoView.vue'
 
 const router = createRouter({
@@ -14,22 +13,18 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/member/:memberId',
-      name: 'member',
-      component: MemberView
+      path: '/member/:memberId/posts',
+      name: 'posts',
+      component: MemberPostsView
     },
     {
       path: '/member/:memberId/albums',
       name: 'albums',
       component: MemberAlbumView
     },
+
     {
-      path: '/member/:memberId/posts',
-      name: 'posts',
-      component: MemberPostsView
-    },
-    {
-      path: '/member/:memberId/todo',
+      path: '/member/:memberId/todos',
       name: 'todo',
       component: MemberTodoView
     }

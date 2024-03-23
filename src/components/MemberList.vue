@@ -7,11 +7,11 @@ const props = defineProps({
 <template>
   <article>
     <figure>
-      <img :src="`https://api.dicebear.com/8.x/pixel-art/svg?seed=${member.username}`" alt="" />
+      <img :src="`https://api.dicebear.com/8.x/pixel-art/svg?seed=${member?.username}`" alt="" />
     </figure>
     <ul v-if="member">
       <li>
-        <router-link :to="`/member/${member.id}`">{{ member.name }}</router-link>
+        <router-link :to="`/member/${member.id}/posts`">{{ member.name }}</router-link>
       </li>
       <li>@{{ member.username }}</li>
       <li>{{ member.email }}</li>

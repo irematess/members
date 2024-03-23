@@ -15,7 +15,7 @@ onMounted(() => {
     <header>
       <h1>Members ({{ members.length }})</h1>
       <main>
-        <MemberList v-for="member in members" :key="member.id" :member="member" />
+        <MemberList v-for="(member, index) in members" :key="index" :member="member" />
       </main>
     </header>
   </div>

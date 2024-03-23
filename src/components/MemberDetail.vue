@@ -11,7 +11,6 @@ onMounted(() => {
   fetchMembersDetail(Number(route.params.memberId)).then((data) => (memberDetail.value = data))
 })
 </script>
-
 <template>
   <div>
     <header v-if="memberDetail">
@@ -45,7 +44,6 @@ header {
   margin: 2rem 2rem;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
 }
 
 header figure img {
@@ -57,9 +55,5 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
-
-ul li {
-  /* margin-bottom: 1rem; */
 }
 </style>
