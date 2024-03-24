@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MemberPostsView from '@/views/MemberPostsView.vue'
+import MemberPostsDetailView from '@/views/MemberPostsDetailView.vue'
 import MemberAlbumsView from '@/views/MemberAlbumsView.vue'
 import MemberTodosView from '@/views/MemberTodosView.vue'
 
@@ -17,6 +18,12 @@ const router = createRouter({
       name: 'posts',
       component: MemberPostsView
     },
+    {
+      path: '/member/:memberId/posts/:postId',
+      name: 'postsDetail',
+      component: MemberPostsDetailView
+    },
+
     {
       path: '/member/:memberId/albums',
       name: 'albums',

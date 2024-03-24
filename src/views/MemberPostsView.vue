@@ -21,7 +21,13 @@ onMounted(async () => {
   </nav>
   <article v-if="posts">
     <h1>Posts ({{ posts.length }})</h1>
-    <router-link to="/" v-for="(post, index) in posts" :key="index"> {{ post.title }}</router-link>
+    <router-link
+      :to="`/member/${route.params.memberId}/posts/${post.id}`"
+      v-for="(post, index) in posts"
+      :key="index"
+    >
+      {{ post.title }}</router-link
+    >
   </article>
 </template>
 <style scoped>
@@ -45,6 +51,7 @@ article h1 {
   text-align: left;
 }
 article a {
+  text-decoration: none;
   text-align: center;
   margin-left: 4.2rem;
   padding: 0.5rem 0 0.5rem 0;

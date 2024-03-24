@@ -1,4 +1,3 @@
-<script setup lang="ts"></script>
 <script setup lang="ts">
 import MemberDetail from '@/components/MemberDetail.vue'
 import { useRoute } from 'vue-router'
