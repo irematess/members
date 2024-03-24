@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import MemberDetail from '@/components/MemberDetail.vue'
+import { fetchMembersTodos } from '@/services/userService'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+
+const todos = ref()
+
+onMounted(async () => {
+  await fetchMembersTodos(Number(route.params.memberId)).then((data) => (todos.value = data))
+})
 </script>
 <template>
   <MemberDetail />
@@ -11,8 +19,17 @@ const route = useRoute()
     <router-link :to="`/member/${route.params.memberId}/albums`">Albums</router-link>
     <router-link :to="`/member/${route.params.memberId}/todos`">Todos</router-link>
   </nav>
+  <ul>
+    <li v-for="(todo, index) in todos" :key="index" :class="{ completed: todo.completed }">
+      {{ todo.title }}
+      <i class="fa-solid fa-check" v-if="todo.completed"></i>
+    </li>
+  </ul>
 </template>
 <style scoped>
+body {
+  font-family: cursive;
+}
 nav {
   align-items: center;
   width: 875px;
@@ -44,5 +61,20 @@ a:link {
 
 a:visited {
   color: black;
+}
+
+li {
+  font-family: cursive;
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.completed {
+  background-color: greenyellow;
 }
 </style>

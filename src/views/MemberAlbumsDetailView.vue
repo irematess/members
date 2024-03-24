@@ -19,6 +19,7 @@ onMounted(async () => {
     <router-link :to="`/member/${route.params.memberId}/albums`">Albums</router-link>
     <router-link :to="`/member/${route.params.memberId}/todos`">Todos</router-link>
   </nav>
+  <h1 v-if="photos">Photos({{ photos.length }})</h1>
   <div class="photos">
     <figure v-for="(photo, index) in photos" :key="index">
       <!-- <img :src="photo.thumbnailUrl" /> -->
