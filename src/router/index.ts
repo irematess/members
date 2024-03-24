@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import MemberPostsView from '@/views/MemberPostsView.vue'
 import MemberPostsDetailView from '@/views/MemberPostsDetailView.vue'
 import MemberAlbumsView from '@/views/MemberAlbumsView.vue'
+import MemberAlbumsDetailView from '@/views/MemberAlbumsDetailView.vue'
 import MemberTodosView from '@/views/MemberTodosView.vue'
 
 const router = createRouter({
@@ -28,6 +29,12 @@ const router = createRouter({
       path: '/member/:memberId/albums',
       name: 'albums',
       component: MemberAlbumsView
+    },
+
+    {
+      path: '/member/:memberId/albums/:albumId',
+      name: 'albumsDetail',
+      component: MemberAlbumsDetailView
     },
 
     {

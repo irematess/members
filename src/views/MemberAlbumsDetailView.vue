@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import MemberDetail from '@/components/MemberDetail.vue'
-import { fetchMembersAlbums } from '@/services/userService'
-import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-
-const albums = ref()
-
+import { ref, onMounted } from 'vue'
+import { fetchMembersAlbumsDetail } from '@/services/userService'
 const route = useRoute()
+const photos = ref()
 
 onMounted(async () => {
-  await fetchMembersAlbums(Number(route.params.memberId)).then((data) => (albums.value = data))
+  await fetchMembersAlbumsDetail(Number(route.params.memberId)).then(
+    (data) => (photos.value = data)
+  )
 })
 </script>
 <template>
@@ -19,34 +19,21 @@ onMounted(async () => {
     <router-link :to="`/member/${route.params.memberId}/albums`">Albums</router-link>
     <router-link :to="`/member/${route.params.memberId}/todos`">Todos</router-link>
   </nav>
-  <h1 v-if="albums">Albums ({{ albums.length }})</h1>
-  <div class="albums">
-    <article v-for="(album, index) in albums" :key="index">
-      <router-link :to="`/member/${route.params.memberId}/albums/${album.id}`">{{
-        album.title
-      }}</router-link>
-    </article>
+  <div class="photos">
+    <figure v-for="(photo, index) in photos" :key="index">
+      <!-- <img :src="photo.thumbnailUrl" /> -->
+      <img src="https://picsum.photos/200" alt="" />
+    </figure>
   </div>
 </template>
 <style scoped>
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-h1 {
-  margin-left: 2.9rem;
-}
-.albums {
-  width: 875px;
-  justify-content: center;
-  align-items: center;
+.photos {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 0;
-  margin: 0;
+}
+
+.photos img {
+  width: 230px;
 }
 nav {
   align-items: center;
@@ -80,18 +67,5 @@ a:link {
 
 a:visited {
   color: black;
-}
-
-article {
-  border: 1px solid black;
-  padding: 2rem;
-  border-radius: 1rem;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  margin-left: 3rem;
-  margin-bottom: 1rem;
-  text-align: center;
 }
 </style>
