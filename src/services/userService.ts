@@ -22,3 +22,8 @@ export const fetchMembersPostsDetail = async (postId: number) => {
   const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`)
   return response.data
 }
+
+export const fetchMembersAlbums = async (memberId: number) => {
+  const response = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${memberId}`)
+  return response.data
+}
