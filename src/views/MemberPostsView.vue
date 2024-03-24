@@ -19,12 +19,14 @@ onMounted(async () => {
     <router-link :to="`/member/${route.params.memberId}/albums`">Albums</router-link>
     <router-link :to="`/member/${route.params.memberId}/todos`">Todos</router-link>
   </nav>
-  <article>
-    <div v-for="(post, index) in posts" :key="index">{{ post.title }}</div>
+  <article v-if="posts">
+    <h1>Posts ({{ posts.length }})</h1>
+    <router-link to="/" v-for="(post, index) in posts" :key="index"> {{ post.title }}</router-link>
   </article>
 </template>
-<style>
+<style scoped>
 body {
+  font-family: cursive;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,8 +38,13 @@ article {
   width: 875px;
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
-article div {
+
+article h1 {
+  text-align: left;
+}
+article a {
   text-align: center;
   margin-left: 4.2rem;
   padding: 0.5rem 0 0.5rem 0;
