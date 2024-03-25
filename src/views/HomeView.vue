@@ -1,44 +1,37 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { fetchUsers } from '../services/userService'
-import MemberList from '@/components/MemberList.vue'
+import UserList from '@/components/UserList.vue'
 
-const members = ref([])
+const users = ref([])
 
 onMounted(() => {
-  fetchUsers().then((data) => (members.value = data))
+  fetchUsers().then((data) => (users.value = data))
 })
 </script>
 
 <template>
-  <div>
-    <header>
-      <h1>Members ({{ members.length }})</h1>
-      <main>
-        <MemberList v-for="(member, index) in members" :key="index" :member="member" />
-      </main>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Users ({{ users.length }})</h1>
     </header>
+    <main class="userList">
+      <UserList v-for="(user, index) in users" :key="index" :user="user" />
+    </main>
   </div>
 </template>
 
-<style>
-body {
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-  margin: 0;
+<style scoped>
+.header {
+  margin-bottom: 3rem;
 }
-
-header h1 {
+.title {
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: 100;
 }
 
-main {
-  padding: 0;
-  margin: 0;
-  border-radius: 2rem;
+.userList {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 5rem;

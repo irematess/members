@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import MemberPostsView from '@/views/MemberPostsView.vue'
-import MemberPostsDetailView from '@/views/MemberPostsDetailView.vue'
-import MemberAlbumsView from '@/views/MemberAlbumsView.vue'
-import MemberAlbumsDetailView from '@/views/MemberAlbumsDetailView.vue'
-import MemberTodosView from '@/views/MemberTodosView.vue'
+import UserPostsView from '@/views/UserPostsView.vue'
+import UserPostsDetailView from '@/views/UserPostsDetailView.vue'
+import UserAlbumsView from '@/views/UserAlbumsView.vue'
+import UserAlbumsDetailView from '@/views/UserAlbumsDetailView.vue'
+import UserTodosView from '@/views/UserTodosView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,32 +15,32 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/member/:memberId/posts',
+      path: '/user/:userId/posts',
       name: 'posts',
-      component: MemberPostsView
+      component: UserPostsView
     },
     {
-      path: '/member/:memberId/posts/:postId',
+      path: '/user/:userId/posts/:postId',
       name: 'postsDetail',
-      component: MemberPostsDetailView
+      component: UserPostsDetailView
     },
 
     {
-      path: '/member/:memberId/albums',
+      path: '/user/:userId/albums',
       name: 'albums',
-      component: MemberAlbumsView
+      component: UserAlbumsView
     },
 
     {
-      path: '/member/:memberId/albums/:albumId',
+      path: '/user/:userId/albums/:albumId',
       name: 'albumsDetail',
-      component: MemberAlbumsDetailView
+      component: UserAlbumsDetailView
     },
 
     {
-      path: '/member/:memberId/todos',
+      path: '/user/:userId/todos',
       name: 'todos',
-      component: MemberTodosView
+      component: UserTodosView
     }
   ]
 })
