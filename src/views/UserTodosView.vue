@@ -34,7 +34,7 @@ onMounted(async () => {
   </div>
 </template>
 <style scoped>
-.navbar a:nth-child(2) {
+.navbar a:nth-child(3) {
   background-color: yellowgreen;
 }
 .todo {
