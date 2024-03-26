@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UserDetail from '@/components/UserDetail.vue'
+import UserNavbar from '@/components/UserNavbar.vue'
 import { fetchUsersAlbums } from '@/services/userService'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
@@ -15,11 +16,8 @@ onMounted(async () => {
 <template>
   <div class="container">
     <UserDetail />
-    <nav class="navbar">
-      <router-link :to="`/user/${route.params.userId}/posts`">Posts</router-link>
-      <router-link :to="`/user/${route.params.userId}/albums`">Albums</router-link>
-      <router-link :to="`/user/${route.params.userId}/todos`">Todos</router-link>
-    </nav>
+    <UserNavbar />
+
     <main>
       <h1 class="title" v-if="albums">Albums ({{ albums.length }})</h1>
       <div class="albums">
@@ -33,10 +31,6 @@ onMounted(async () => {
   </div>
 </template>
 <style scoped>
-.navbar a:nth-child(2) {
-  background-color: yellowgreen;
-}
-
 .albums {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

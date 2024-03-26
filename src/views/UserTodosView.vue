@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UserDetail from '@/components/UserDetail.vue'
+import UserNavbar from '@/components/UserNavbar.vue'
 import { fetchUsersTodos } from '@/services/userService'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
@@ -15,11 +16,7 @@ onMounted(async () => {
 <template>
   <div class="container">
     <UserDetail />
-    <nav class="navbar">
-      <router-link :to="`/user/${route.params.userId}/posts`">Posts</router-link>
-      <router-link :to="`/user/${route.params.userId}/albums`">Albums</router-link>
-      <router-link :to="`/user/${route.params.userId}/todos`">Todos</router-link>
-    </nav>
+    <UserNavbar />
     <ul class="todos">
       <li
         class="todo"

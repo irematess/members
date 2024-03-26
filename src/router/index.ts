@@ -17,7 +17,13 @@ const router = createRouter({
     {
       path: '/user/:userId/posts',
       name: 'posts',
-      component: UserPostsView
+      component: UserPostsView,
+      children: [
+        // {
+        //   path: ':postId',
+        //   component: UserPostsDetailView
+        // }
+      ]
     },
     {
       path: '/user/:userId/posts/:postId',

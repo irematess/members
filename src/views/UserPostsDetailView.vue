@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UserDetail from '@/components/UserDetail.vue'
+import UserNavbar from '@/components/UserNavbar.vue'
 import { fetchUsersPostsDetail } from '@/services/userService'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
@@ -16,11 +17,7 @@ const route = useRoute()
 <template>
   <div class="container" v-if="postsDetail">
     <UserDetail />
-    <nav class="navbar">
-      <router-link :to="`/user/${route.params.userId}/posts`">Posts</router-link>
-      <router-link :to="`/user/${route.params.userId}/albums`">Albums</router-link>
-      <router-link :to="`/user/${route.params.userId}/todos`">Todos</router-link>
-    </nav>
+    <UserNavbar />
     <button>
       <router-link :to="`/user/${route.params.userId}/posts`"
         ><i class="fa-solid fa-left-long"></i
@@ -35,10 +32,6 @@ const route = useRoute()
   </div>
 </template>
 <style scoped>
-.navbar a:nth-child(1) {
-  background-color: yellowgreen;
-}
-
 button {
   border: none;
   outline: none;

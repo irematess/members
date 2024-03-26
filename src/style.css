@@ -25,6 +25,10 @@ a {
   font-weight: 100;
 }
 
+.navbar .router-link-active .router-link-exact-active {
+  background-color: greenyellow;
+}
+
 .navbar {
   padding: 2rem 0;
   display: flex;
@@ -54,4 +58,12 @@ a:link {
 
 a:visited {
   color: black;
+}
+
+.router-link-active.router-link-exact-active {
+  background-color: greenyellow;
+}
+
+.router-link-active {
+  background-color: greenyellow;
 }

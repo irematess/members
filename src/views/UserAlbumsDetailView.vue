@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UserDetail from '@/components/UserDetail.vue'
+import UserNavbar from '@/components/UserNavbar.vue'
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import { fetchUsersAlbumsDetail } from '@/services/userService'
@@ -13,11 +14,12 @@ onMounted(async () => {
 <template>
   <div class="container">
     <UserDetail />
-    <nav class="navbar">
-      <router-link :to="`/user/${route.params.userId}/posts`">Posts</router-link>
-      <router-link :to="`/user/${route.params.userId}/albums`">Albums</router-link>
-      <router-link :to="`/user/${route.params.userId}/todos`">Todos</router-link>
-    </nav>
+    <UserNavbar />
+    <button>
+      <router-link :to="`/user/${route.params.userId}/posts`"
+        ><i class="fa-solid fa-left-long"></i
+      ></router-link>
+    </button>
     <h1 class="title" v-if="photos">Photos({{ photos.length }})</h1>
     <div class="photos">
       <img :src="photo.thumbnailUrl" v-for="(photo, index) in photos" :key="index" />
@@ -25,10 +27,6 @@ onMounted(async () => {
   </div>
 </template>
 <style scoped>
-.navbar a:nth-child(2) {
-  background-color: yellowgreen;
-}
-
 .photos {
   padding: 1rem 0;
   gap: 1rem;
@@ -37,5 +35,18 @@ onMounted(async () => {
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+button {
+  border: none;
+  outline: none;
+  margin-top: 2rem;
+  background-color: white;
+}
+
+button i {
+  -webkit-text-stroke: 1px black;
+  color: yellowgreen;
+  font-size: 2rem;
 }
 </style>
